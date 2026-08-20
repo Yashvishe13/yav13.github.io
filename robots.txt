@@ -1,11 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://yashvishe.github.io/sitemap.xml
-
-# Disallow crawling of specific files if needed
-# User-agent: *
-# Disallow: /css/
-# Disallow: /js/
-
+Sitemap: https://yashvishe13.github.io/sitemap.xml
