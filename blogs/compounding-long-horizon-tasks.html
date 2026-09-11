@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concerns with compounding on long horizon tasks — Yash Vishe</title>
+<meta name="description" content="I think we all know that agents are not that great at solving long horizon tasks to some extent and the major problem is maintaining the policy that they start with also called policy drifting.">
+<meta name="author" content="Yash Vishe">
+<link rel="canonical" href="https://yashvishe13.github.io/blogs/compounding-long-horizon-tasks.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yash Vishe">
+<meta property="og:title" content="Concerns with compounding on long horizon tasks">
+<meta property="og:description" content="On policy drifting in self evolving agents, and why discarding harmful information matters as much as incorporating new information.">
+<meta property="og:url" content="https://yashvishe13.github.io/blogs/compounding-long-horizon-tasks.html">
+<meta property="og:image" content="https://yashvishe13.github.io/assets/profile.jpg">
+<meta property="article:published_time" content="2026-09-11">
+<meta property="article:author" content="Yash Vishe">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Concerns with compounding on long horizon tasks">
+<meta name="twitter:description" content="On policy drifting in self evolving agents, and why discarding harmful information matters as much as incorporating new information.">
+<meta name="twitter:image" content="https://yashvishe13.github.io/assets/profile.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Concerns with compounding on long horizon tasks",
+  "datePublished": "2026-09-11",
+  "author": { "@id": "https://yashvishe13.github.io/#person" },
+  "url": "https://yashvishe13.github.io/blogs/compounding-long-horizon-tasks.html",
+  "isPartOf": { "@id": "https://yashvishe13.github.io/#website" }
+}
+</script>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('theme');
+  document.documentElement.setAttribute('data-theme', saved || 'dark');
+})();
+</script>
+</head>
+<body class="board">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <span>Yash Vishe</span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-link is-active" href="/blogs/" aria-current="page">Blogs</a>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color mode" title="Switch to dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="page page-article">
+  <a class="article-back" href="/blogs/">← blogs</a>
+  <article class="article paper">
+    <span class="pin" aria-hidden="true"></span>
+    <h1 class="article-title">Concerns with compounding on long horizon tasks</h1>
+    <p class="article-meta">Sep 11, 2026</p>
+    <div class="article-body">
+      <p>I think we all know that agents are not that great at solving long horizon tasks to some extent and the major problem is maintaining the policy that they start with also called policy drifting. Lets say you initialize a policy for an agent and then deploy it as a self evolving agent in a production setting, policy entails for first 100 iterations and everything works perfectly, agent encounters a situation and decides to slightly drift away from the policy and maybe it makes sense in that situation, but this is now stored in the memory and the original policy has permanently started a tangent to some extent. Fast forward to iteration 700, tangent has extended to a completely different policy that we originally started with. While in an organizational setting this could result in loss of revenue, but in healthcare sector or finance sector, this could have catastrophic damages.</p>
+      <p>We all imagine a future with AGI but I think there’s an in-between step that will happen before AGI starts rolling out and I think it’s an AI model that’s learning from everyone. An agent that learns from everyone also has its policy drifted by everyone. As scary as it sounds, human beings do learn from everyone, what they decide to keep vs what they decide to discard makes them a good or a bad human being and I think the current direction of training is how to incorporate available information but I think it should also take into account how to discard information that is potentially harmful - most of this is handled by guardrails today, which is just a single line of defense and if these models keep breaking out of sandboxes, I don’t how long will it take for them to breakout of guardrails. Maybe we should start thinking about this</p>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Yash Vishe. Built with plain HTML and CSS, hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>.</p>
+  <p class="footer-keywords">Research interests: world models · continual learning · reinforcement learning · self-evolving agents · LLM agents · agent skill evolution · procedural memory · generative environments · multimodal reasoning · musical intelligence</p>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('themeToggle');
+  apply(document.documentElement.getAttribute('data-theme') || 'dark');
+
+  btn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(next);
+    localStorage.setItem('theme', next);
+  });
+
+  function apply(mode) {
+    document.documentElement.setAttribute('data-theme', mode);
+    btn.setAttribute('aria-pressed', mode === 'dark');
+    btn.title = mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  }
+})();
+</script>
+
+</body>
+</html>
